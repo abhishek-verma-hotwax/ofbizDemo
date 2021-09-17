@@ -29,7 +29,10 @@ under the License.
             <widgets>
                 <decorator-screen name="OfbizDemoCommonDecorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
-                        <label style="h2" text="Hello World" ></label>
+                        <label style="h2" text="Add new Record" ></label>
+                        <screenlet title="Add Ofbiz Demo">
+                            <include-form name="AddOfbizDemo" location="component://ofbizDemo/widget/OfbizDemoForms.xml"/>
+                        </screenlet>
                     </decorator-section>
                 </decorator-screen>
             </widgets>
