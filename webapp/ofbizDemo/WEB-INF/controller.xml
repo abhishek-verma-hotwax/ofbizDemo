@@ -46,7 +46,10 @@ under the License.
         <event type="service" invoke="createOfbizDemo"/>
         <response name="success" type="view" value="main"/>
     </request-map>
+<<<<<<< HEAD
     <request-map uri="FindOfbizDemo"><security https="true" auth="true"/><response name="success" type="view" value="FindOfbizDemo"/></request-map>
+=======
+>>>>>>> 1e926ff368988926e1e8e32944b1d051968b78bb
     <!-- View Mappings -->
     <view-map name="main" type="screen" page="component://ofbizDemo/widget/OfbizDemoScreens.xml#main"/>
     <view-map name="FindOfbizDemo" type="screen" page="component://ofbizDemo/widget/OfbizDemoScreens.xml#FindOfbizDemo"/>
