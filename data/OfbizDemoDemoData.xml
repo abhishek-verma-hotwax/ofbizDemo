@@ -44,7 +44,7 @@ under the License.
 
 <!--    Setting up default price for table -->
     <ProductPrice productId="9003" productPriceTypeId="DEFAULT_PRICE" productPricePurposeId="PURCHASE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2021-09-01 09:00:00" price="75"/>
-    
+
 <!--    Adding Bill of Materials of product in ProductAssoc entity-->
     <ProductAssoc productId="9003" productIdTo="9000" productAssocTypeId="MANUF_COMPONENT" fromDate="2021-09-01 10:00:00" quantity="5" />
     <ProductAssoc productId="9003" productIdTo="9001" productAssocTypeId="MANUF_COMPONENT" fromDate="2021-09-01 10:00:00" quantity="20" />
@@ -67,5 +67,5 @@ under the License.
 
 <!--    Adding Routing Product Link in WorkEffortGoodStandard-->
     <WorkEffortGoodStandard workEffortId="9004" productId="9003" workEffortGoodStdTypeId="ROU_PROD_TEMPLATE" fromDate="2021-09-01 12:00:00" />
-
+    
 </entity-engine-xml>
