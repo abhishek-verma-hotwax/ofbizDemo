@@ -45,5 +45,30 @@ under the License.
 <!--    Setting up default price for table -->
     <ProductPrice productId="9003" productPriceTypeId="DEFAULT_PRICE" productPricePurposeId="PURCHASE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2021-09-01 09:00:00" price="75"/>
 
+<<<<<<< HEAD
+<!--    Adding Bill of Materials of product in ProductAssoc entity-->
+    <ProductAssoc productId="9003" productIdTo="9000" productAssocTypeId="MANUF_COMPONENT" fromDate="2021-09-01 10:00:00" quantity="5" />
+    <ProductAssoc productId="9003" productIdTo="9001" productAssocTypeId="MANUF_COMPONENT" fromDate="2021-09-01 10:00:00" quantity="20" />
+    <ProductAssoc productId="9003" productIdTo="9002" productAssocTypeId="MANUF_COMPONENT" fromDate="2021-09-01 10:00:00" quantity="1" />
+
+<!--    Adding Routing task in WorkEffort entity-->
+    <WorkEffort workEffortId="9000" workEffortTypeId="ROU_TASK" currentStatusId="ROU_ACTIVE" workEffortPurposeTypeId="ROU_MANUFACTURING" workEffortName="Cut Wood" description="Cut Wood to Length" />
+    <WorkEffort workEffortId="9001" workEffortTypeId="ROU_TASK" currentStatusId="ROU_ACTIVE" workEffortPurposeTypeId="ROU_MANUFACTURING" workEffortName="Nail Together" description="Nail wood Togather" />
+    <WorkEffort workEffortId="9002" workEffortTypeId="ROU_TASK" currentStatusId="ROU_ACTIVE" workEffortPurposeTypeId="ROU_MANUFACTURING" workEffortName="Sand Togather" description="Sand the Table" />
+    <WorkEffort workEffortId="9003" workEffortTypeId="ROU_TASK" currentStatusId="ROU_ACTIVE" workEffortPurposeTypeId="ROU_MANUFACTURING" workEffortName="Varnish Table" description="Varnish the Table" />
+
+<!--    Adding Routing for Product processing in WorkEffort entity-->
+    <WorkEffort workEffortId="9004" workEffortTypeId="ROUTING" currentStatusId="ROU_ACTIVE" workEffortName="Table Routing" description="routing to make table" />
+
+<!--    Adding Routing task Assoc in WorkEffortAssoc entity-->
+    <WorkEffortAssoc workEffortIdFrom="9004" workEffortIdTo="9000" workEffortAssocTypeId="ROUTING_COMPONENT" sequenceNum="10" fromDate="2021-09-01 11:00:00" />
+    <WorkEffortAssoc workEffortIdFrom="9004" workEffortIdTo="9001" workEffortAssocTypeId="ROUTING_COMPONENT" sequenceNum="20" fromDate="2021-09-01 11:00:00" />
+    <WorkEffortAssoc workEffortIdFrom="9004" workEffortIdTo="9002" workEffortAssocTypeId="ROUTING_COMPONENT" sequenceNum="30" fromDate="2021-09-01 11:00:00" />
+    <WorkEffortAssoc workEffortIdFrom="9004" workEffortIdTo="9003" workEffortAssocTypeId="ROUTING_COMPONENT" sequenceNum="40" fromDate="2021-09-01 11:00:00" />
+
+<!--    Adding Routing Product Link in WorkEffortGoodStandard-->
+    <WorkEffortGoodStandard workEffortId="9004" productId="9003" workEffortGoodStdTypeId="ROU_PROD_TEMPLATE" fromDate="2021-09-01 12:00:00" />
+=======
+>>>>>>> 948d9e24c0d74b9f4dbe1e8914eb713dbc269dcf
     
 </entity-engine-xml>
