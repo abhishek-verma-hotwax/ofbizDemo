@@ -19,8 +19,31 @@ under the License.
 -->
 
 <entity-engine-xml>
+<!--     Inserting Demo data for test purpose -->
     <OfbizDemo ofbizDemoId="SAMPLE_DEMO_1" ofbizDemoTypeId="INTERNAL" firstName="Sample First 1" lastName="Sample Last 1" comments="This is test comment for first record."/>
     <OfbizDemo ofbizDemoId="SAMPLE_DEMO_2" ofbizDemoTypeId="INTERNAL" firstName="Sample First 2" lastName="Sample last 2" comments="This is test comment for second record."/>
     <OfbizDemo ofbizDemoId="SAMPLE_DEMO_3" ofbizDemoTypeId="EXTERNAL" firstName="Sample First 3" lastName="Sample last 3" comments="This is test comment for third record."/>
     <OfbizDemo ofbizDemoId="SAMPLE_DEMO_4" ofbizDemoTypeId="EXTERNAL" firstName="Sample First 4" lastName="Sample last 4" comments="This is test comment for fourth record."/>
+
+<!--     Createing new product data in Product entity -->
+    <Product productId="9000" productTypeId="RAW_MATERIAL" internalName="Wood" />
+    <Product productId="9001" productTypeId="RAW_MATERIAL" internalName="Nails" />
+    <Product productId="9002" productTypeId="RAW_MATERIAL" internalName="Varnish" />
+    <Product productId="9003" productTypeId="FINISHED_GOOD" internalName="Table" />
+
+<!--     Add facilities of product in ProductFacility entity -->
+    <ProductFacility productId="9000" facilityId="WebStoreWarehouse" minimumStock="25" reorderQuantity="100" />
+    <ProductFacility productId="9001" facilityId="WebStoreWarehouse" minimumStock="100" reorderQuantity="500" />
+    <ProductFacility productId="9002" facilityId="WebStoreWarehouse" minimumStock="5" reorderQuantity="20" />
+    <ProductFacility productId="9003" facilityId="WebStoreWarehouse" minimumStock="5" />
+
+<!--     Adding supplier detail of product in SupplierProduct entity-->
+    <SupplierProduct productId="9000" partyId="DemoSupplier" availableFromDate="2021-09-01 09:00:00" supplierPrefOrderId="10_MAIN_SUPPL" minimumOrderQuantity="0" lastPrice="11" currencyUomId="USD" supplierProductId="XYZWood"/>
+    <SupplierProduct productId="9001" partyId="DemoSupplier" availableFromDate="2021-09-01 09:00:00" supplierPrefOrderId="10_MAIN_SUPPL" minimumOrderQuantity="0" lastPrice="4" currencyUomId="USD" supplierProductId="123Nails" />
+    <SupplierProduct productId="9002" partyId="DemoSupplier" availableFromDate="2021-09-01 09:00:00" supplierPrefOrderId="10_MAIN_SUPPL" minimumOrderQuantity="0" lastPrice="5" currencyUomId="USD" supplierProductId="ABCVarnish" />
+
+<!--    Setting up default price for table -->
+    <ProductPrice productId="9003" productPriceTypeId="DEFAULT_PRICE" productPricePurposeId="PURCHASE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2021-09-01 09:00:00" price="75"/>
+
+    
 </entity-engine-xml>
