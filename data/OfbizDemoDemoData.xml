@@ -67,5 +67,18 @@ under the License.
 
 <!--    Adding Routing Product Link in WorkEffortGoodStandard-->
     <WorkEffortGoodStandard workEffortId="9004" productId="9003" workEffortGoodStdTypeId="ROU_PROD_TEMPLATE" fromDate="2021-09-01 12:00:00" />
+
+<!--    Adding Production Run in WorkEffort Entity-->
+    <WorkEffort workEffortId="9500" workEffortTypeId="PROD_ORDER_HEADER" currentStatusId="PRUN_CREATED" workEffortPurposeTypeId="WEPT_PRODUCTION_RUN" workEffortName="MRP_MRP2" facilityId="WebStoreWarehouse" quantityToProduce="5" />
+    <WorkEffort workEffortId="9501" workEffortTypeId="PROD_ORDER_TASK" currentStatusId="PRUN_CREATED" workEffortPurposeTypeId="WEPT_PRODUCTION_RUN" workEffortParentId="9500" workEffortName="Cut Wood" priority="10" description="Cut Wood to Length" facilityId="WebStoreWarehouse" quantityToProduce="5" />
+    <WorkEffort workEffortId="9502" workEffortTypeId="PROD_ORDER_TASK" currentStatusId="PRUN_CREATED" workEffortPurposeTypeId="WEPT_PRODUCTION_RUN" workEffortParentId="9500" workEffortName="Nail Togather" priority="20" description="Nail Wood Togather" facilityId="WebStoreWarehouse" quantityToProduce="5" />
+    <WorkEffort workEffortId="9503" workEffortTypeId="PROD_ORDER_TASK" currentStatusId="PRUN_CREATED" workEffortPurposeTypeId="WEPT_PRODUCTION_RUN" workEffortParentId="9500" workEffortName="Sand Table" priority="30" description="Sand the Table" facilityId="WebStoreWarehouse" quantityToProduce="5" />
+    <WorkEffort workEffortId="9504" workEffortTypeId="PROD_ORDER_TASK" currentStatusId="PRUN_CREATED" workEffortPurposeTypeId="WEPT_PRODUCTION_RUN" workEffortParentId="9500" workEffortName="Varnish Table" priority="40" description="Varnish the Table" facilityId="WebStoreWarehouse" quantityToProduce="5" />
+
+<!--    Adding Production Good Standard in WorkEffortSoodStandard-->
+    <WorkEffortGoodStandard workEffortId="9500" productId="9003" workEffortGoodStdTypeId="PRUN_PROD_DELIV" fromDate="2021-09-01 12:01:00" statusId="WEGS_CREATED" estimatedQuantity="5" />
+    <WorkEffortGoodStandard workEffortId="9501" productId="9000" workEffortGoodStdTypeId="PRUNT_PROD_NEEDED" fromDate="2021-09-01 12:05:00" statusId="WEGS_CREATED" estimatedQuantity="25" />
+    <WorkEffortGoodStandard workEffortId="9501" productId="9001" workEffortGoodStdTypeId="PRUNT_PROD_NEEDED" fromDate="2021-09-01 12:05:00" statusId="WEGS_CREATED" estimatedQuantity="100" />
+    <WorkEffortGoodStandard workEffortId="9501" productId="9002" workEffortGoodStdTypeId="PRUNT_PROD_NEEDED" fromDate="2021-09-01 12:05:00" statusId="WEGS_CREATED" estimatedQuantity="5" />
     
 </entity-engine-xml>
