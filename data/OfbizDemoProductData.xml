@@ -76,5 +76,117 @@
     <InventoryItemDetail inventoryItemId="INV03" inventoryItemDetailSeqId="INVD03" effectiveDate="2021-09-01 11:15:00" quantityOnHandDiff="200" availableToPromiseDiff="200" accountingQuantityDiff="200" />
 
 
+    <!--    2nd Product details-->
+    <!--    Createing New Product-->
+    <Product productId="demo01" productTypeId="RAW_MATERIAL" internalName="Cloth" />
+    <Product productId="demo02" productTypeId="RAW_MATERIAL" internalName="thread" />
+    <Product productId="demo03" productTypeId="RAW_MATERIAL" internalName="Cloth Color" />
+    <Product productId="demo04" productTypeId="RAW_MATERIAL" internalName="Pattern tool" />
+    <Product productId="demo05" productTypeId="FINISHED_GOOD" internalName="Shirt" />
+
+    <!--    Adding facilities to product-->
+    <ProductFacility productId="demo01" facilityId="WebStoreWarehouse" minimumStock="50" reorderQuantity="200" />
+    <ProductFacility productId="demo02" facilityId="WebStoreWarehouse" minimumStock="100" reorderQuantity="300" />
+    <ProductFacility productId="demo03" facilityId="WebStoreWarehouse" minimumStock="30" reorderQuantity="100" />
+    <ProductFacility productId="demo04" facilityId="WebStoreWarehouse" minimumStock="5" reorderQuantity="10" />
+    <ProductFacility productId="demo05" facilityId="WebStoreWarehouse" minimumStock="10" />
+
+    <!--    Adding Supplier to product-->
+    <SupplierProduct productId="demo01" partyId="DemoSupplier" availableFromDate="2021-09-02 09:00:00" supplierPrefOrderId="10_MAIN_SUPPL" minimumOrderQuantity="0" lastPrice="10" currencyUomId="USD" supplierProductId="ABCCloths" />
+    <SupplierProduct productId="demo02" partyId="DemoSupplier" availableFromDate="2021-09-02 09:00:00" supplierPrefOrderId="10_MAIN_SUPPL" minimumOrderQuantity="0" lastPrice="5" currencyUomId="USD" supplierProductId="A2ZThreads" />
+    <SupplierProduct productId="demo03" partyId="DemoSupplier" availableFromDate="2021-09-02 09:00:00" supplierPrefOrderId="10_MAIN_SUPPL" minimumOrderQuantity="0" lastPrice="7" currencyUomId="USD" supplierProductId="MultiColor" />
+    <SupplierProduct productId="demo04" partyId="DemoSupplier" availableFromDate="2021-09-02 09:00:00" supplierPrefOrderId="10_MAIN_SUPPL" minimumOrderQuantity="0" lastPrice="15" currencyUomId="USD" supplierProductId="ANYTOOL" />
+    <SupplierProduct productId="demo05" partyId="DemoSupplier" availableFromDate="2021-09-02 09:00:00" supplierPrefOrderId="10_MAIN_SUPPL" minimumOrderQuantity="0" lastPrice="30" currencyUomId="USD" supplierProductId="SHIRTHOUSE" />
+
+    <!--    Setting up default price for Product -->
+    <ProductPrice productId="demo05" productPriceTypeId="DEFAULT_PRICE" productPricePurposeId="PURCHASE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2021-09-01 09:00:00" price="50"/>
+
+    <!--    Adding Bill of Materials of product -->
+    <ProductAssoc productId="demo05" productIdTo="demo01" productAssocTypeId="MANUF_COMPONENT" fromDate="2021-09-01 09:30:00" quantity="2" />
+    <ProductAssoc productId="demo05" productIdTo="demo02" productAssocTypeId="MANUF_COMPONENT" fromDate="2021-09-01 09:30:00" quantity="5" />
+    <ProductAssoc productId="demo05" productIdTo="demo03" productAssocTypeId="MANUF_COMPONENT" fromDate="2021-09-01 09:30:00" quantity="3" />
+    <ProductAssoc productId="demo05" productIdTo="demo04" productAssocTypeId="MANUF_COMPONENT" fromDate="2021-09-01 09:30:00" quantity="1" />
+
+    <!--    Adding Routing task in WorkEffort entity-->
+    <WorkEffort workEffortId="SROUT01" workEffortTypeId="ROU_TASK" currentStatusId="ROU_ACTIVE" workEffortPurposeTypeId="ROU_MANUFACTURING" workEffortName="Cut Cloth" description="Cut the pieces of cloth" />
+    <WorkEffort workEffortId="SROUT02" workEffortTypeId="ROU_TASK" currentStatusId="ROU_ACTIVE" workEffortPurposeTypeId="ROU_MANUFACTURING" workEffortName="Sewing with thread" description="Sewing cloth with Thread" />
+    <WorkEffort workEffortId="SROUT03" workEffortTypeId="ROU_TASK" currentStatusId="ROU_ACTIVE" workEffortPurposeTypeId="ROU_MANUFACTURING" workEffortName="Coloring" description="Coloring the cloth" />
+    <WorkEffort workEffortId="SROUT04" workEffortTypeId="ROU_TASK" currentStatusId="ROU_ACTIVE" workEffortPurposeTypeId="ROU_MANUFACTURING" workEffortName="Draw Pattern" description="Draw Patterns in Shirt" />
+
+    <!--    Adding Routiung for product-->
+    <WorkEffort workEffortId="SROU01" workEffortTypeId="ROUTING" currentStatusId="ROU_ACTIVE" workEffortName="Shirt Routing" description="Routing to make Shirt" />
+
+    <!--    Adding routing task assoc with routing -->
+    <WorkEffortAssoc workEffortIdFrom="SROU01" workEffortIdTo="SROUT01" workEffortAssocTypeId="ROUTING_COMPONENT" sequenceNum="10" fromDate="2021-09-01 11:05:00" />
+    <WorkEffortAssoc workEffortIdFrom="SROU01" workEffortIdTo="SROUT02" workEffortAssocTypeId="ROUTING_COMPONENT" sequenceNum="20" fromDate="2021-09-01 11:05:00" />
+    <WorkEffortAssoc workEffortIdFrom="SROU01" workEffortIdTo="SROUT03" workEffortAssocTypeId="ROUTING_COMPONENT" sequenceNum="30" fromDate="2021-09-01 11:05:00" />
+    <WorkEffortAssoc workEffortIdFrom="SROU01" workEffortIdTo="SROUT04" workEffortAssocTypeId="ROUTING_COMPONENT" sequenceNum="40" fromDate="2021-09-01 11:05:00" />
+
+    <CostComponentCalc costComponentCalcId="CCC02" description="for Preparing Cloths" fixedCost="30" currencyUomId="USD" />
+
+    <!--    Linking between Cost component calc and routing task in WorkEffortCostCalc-->;
+    <WorkEffortCostCalc workEffortId="SROUT01" costComponentTypeId="GEN_COST" costComponentCalcId="CCC02" fromDate="2021-09-01 11:05:00" />
+
+    <!--    Adding Routing Product Link-->
+    <WorkEffortGoodStandard workEffortId="SROU01" productId="demo05" workEffortGoodStdTypeId="ROU_PROD_TEMPLATE" fromDate="2021-09-01 11:10:00" />
+
+    <!--    Adding new Item In Inventory in InventoryItem entity-->
+    <InventoryItem inventoryItemId="INV04" inventoryItemTypeId="NON_SERIAL_INV_ITEM" productId="demo01" facilityId="WebStoreWarehouse" unitCost="15" currencyUomId="USD" quantityOnHandTotal="200" availableToPromiseTotal="200"/>
+    <InventoryItemDetail inventoryItemId="INV04" inventoryItemDetailSeqId="INVD04" effectiveDate="2021-09-01 11:15:00" quantityOnHandDiff="200" availableToPromiseDiff="200" accountingQuantityDiff="200" />
+
+    <InventoryItem inventoryItemId="INV05" inventoryItemTypeId="NON_SERIAL_INV_ITEM" productId="demo02" facilityId="WebStoreWarehouse" unitCost="10" currencyUomId="USD" />
+    <InventoryItemDetail inventoryItemId="INV05" inventoryItemDetailSeqId="INVD05" effectiveDate="2021-09-01 11:15:00" quantityOnHandDiff="200" availableToPromiseDiff="200" accountingQuantityDiff="200" />
+
+    <InventoryItem inventoryItemId="INV06" inventoryItemTypeId="NON_SERIAL_INV_ITEM" productId="demo03" facilityId="WebStoreWarehouse" unitCost="15" currencyUomId="USD" />
+    <InventoryItemDetail inventoryItemId="INV06" inventoryItemDetailSeqId="INVD06" effectiveDate="2021-09-01 11:15:00" quantityOnHandDiff="200" availableToPromiseDiff="200" accountingQuantityDiff="200" />
+
+    <InventoryItem inventoryItemId="INV07" inventoryItemTypeId="NON_SERIAL_INV_ITEM" productId="demo04" facilityId="WebStoreWarehouse" unitCost="20" currencyUomId="USD" />
+    <InventoryItemDetail inventoryItemId="INV07" inventoryItemDetailSeqId="INVD07" effectiveDate="2021-09-01 11:15:00" quantityOnHandDiff="200" availableToPromiseDiff="200" accountingQuantityDiff="200" />
+
+    <!--    Adding Production Run in WorkEffort Entity-->
+    <WorkEffort workEffortId="SPR001" workEffortTypeId="PROD_ORDER_HEADER" currentStatusId="PRUN_COMPLETED" workEffortPurposeTypeId="WEPT_PRODUCTION_RUN" workEffortName="MRP_MRP3" facilityId="WebStoreWarehouse" quantityToProduce="1" />
+    <WorkEffort workEffortId="SPRT01" workEffortTypeId="PROD_ORDER_TASK" currentStatusId="PRUN_COMPLETED" workEffortPurposeTypeId="WEPT_PRODUCTION_RUN" workEffortParentId="SPR001" workEffortName="Cut Cloth" priority="10" description="Cut the pieces of cloth" facilityId="WebStoreWarehouse" quantityToProduce="1" />
+    <WorkEffort workEffortId="SPRT02" workEffortTypeId="PROD_ORDER_TASK" currentStatusId="PRUN_COMPLETED" workEffortPurposeTypeId="WEPT_PRODUCTION_RUN" workEffortParentId="SPR001" workEffortName="Sewing with thread" priority="20" description="Sewing cloth with Thread" facilityId="WebStoreWarehouse" quantityToProduce="1" />
+    <WorkEffort workEffortId="SPRT03" workEffortTypeId="PROD_ORDER_TASK" currentStatusId="PRUN_COMPLETED" workEffortPurposeTypeId="WEPT_PRODUCTION_RUN" workEffortParentId="SPR001" workEffortName="Coloring" priority="30" description="Coloring the cloth" facilityId="WebStoreWarehouse" quantityToProduce="1" />
+    <WorkEffort workEffortId="SPRT04" workEffortTypeId="PROD_ORDER_TASK" currentStatusId="PRUN_COMPLETED" workEffortPurposeTypeId="WEPT_PRODUCTION_RUN" workEffortParentId="SPR001" workEffortName="Draw Pattern" priority="40" description="Draw Patterns in Shirt" facilityId="WebStoreWarehouse" quantityToProduce="1" />
+
+    <!--    Adding Production Good Standard in WorkEffortSoodStandard-->
+    <!--    <WorkEffortGoodStandard workEffortId="SROU1" productId="SP004" workEffortGoodStdTypeId="ROU_PROD_TEMPLATE" fromDate="2021-09-01 12:01:00" />-->
+    <WorkEffortGoodStandard workEffortId="SPR001" productId="demo05" workEffortGoodStdTypeId="PRUN_PROD_DELIV" fromDate="2021-09-01 12:01:00" statusId="WEGS_CREATED" estimatedQuantity="1" />
+    <WorkEffortGoodStandard workEffortId="SPRT01" productId="demo01" workEffortGoodStdTypeId="PRUNT_PROD_NEEDED" fromDate="2021-09-01 12:05:00" statusId="WEGS_COMPLETED" estimatedQuantity="2" />
+    <WorkEffortGoodStandard workEffortId="SPRT01" productId="demo02" workEffortGoodStdTypeId="PRUNT_PROD_NEEDED" fromDate="2021-09-01 12:05:00" statusId="WEGS_COMPLETED" estimatedQuantity="5" />
+    <WorkEffortGoodStandard workEffortId="SPRT01" productId="demo03" workEffortGoodStdTypeId="PRUNT_PROD_NEEDED" fromDate="2021-09-01 12:05:00" statusId="WEGS_COMPLETED" estimatedQuantity="3" />
+    <WorkEffortGoodStandard workEffortId="SPRT01" productId="demo04" workEffortGoodStdTypeId="PRUNT_PROD_NEEDED" fromDate="2021-09-01 12:05:00" statusId="WEGS_COMPLETED" estimatedQuantity="1" />
+
+    <!--    Issueing Item though Production run creating record in InventoryItemDetail entity -->
+    <InventoryItemDetail inventoryItemId="INV04" inventoryItemDetailSeqId="INVD08" effectiveDate="2021-09-01 12:10:00" quantityOnHandDiff="-2" availableToPromiseDiff="-2" accountingQuantityDiff="0" workEffortId="SPRT01" />
+    <InventoryItemDetail inventoryItemId="INV05" inventoryItemDetailSeqId="INVD09" effectiveDate="2021-09-01 12:10:00" quantityOnHandDiff="-5" availableToPromiseDiff="-5" accountingQuantityDiff="0" workEffortId="SPRT01" />
+    <InventoryItemDetail inventoryItemId="INV06" inventoryItemDetailSeqId="INVD010" effectiveDate="2021-09-01 12:10:00" quantityOnHandDiff="-3" availableToPromiseDiff="-3" accountingQuantityDiff="0" workEffortId="SPRT01" />
+    <InventoryItemDetail inventoryItemId="INV07" inventoryItemDetailSeqId="INVD011" effectiveDate="2021-09-01 12:10:00" quantityOnHandDiff="-1" availableToPromiseDiff="-1" accountingQuantityDiff="0" workEffortId="SPRT01" />
+
+    <!--    Creating record for assigning material to a Production Run from inventory-->
+    <WorkEffortInventoryAssign workEffortId="SPRT01" inventoryItemId="INV04" quantity="2" />
+    <WorkEffortInventoryAssign workEffortId="SPRT01" inventoryItemId="INV05" quantity="5" />
+    <WorkEffortInventoryAssign workEffortId="SPRT01" inventoryItemId="INV06" quantity="3" />
+    <WorkEffortInventoryAssign workEffortId="SPRT01" inventoryItemId="INV07" quantity="1" />
+
+    <!--    Adding workEffortStauts-->
+    <WorkEffortStatus workEffortId="SPR001" statusId="PRUN_DOC_PRINTED" statusDatetime="2021-09-01 12:15:00" />
+    <WorkEffortStatus workEffortId="SPRT01" statusId="PRUN_DOC_PRINTED" statusDatetime="2021-09-01 12:15:00" />
+    <WorkEffortStatus workEffortId="SPRT02" statusId="PRUN_DOC_PRINTED" statusDatetime="2021-09-01 12:15:00" />
+    <WorkEffortStatus workEffortId="SPRT03" statusId="PRUN_DOC_PRINTED" statusDatetime="2021-09-01 12:15:00" />
+    <WorkEffortStatus workEffortId="SPRT04" statusId="PRUN_DOC_PRINTED" statusDatetime="2021-09-01 12:15:00" />
+    <WorkEffortStatus workEffortId="SPRT01" statusId="PRUN_RUNNING" statusDatetime="2021-09-01 12:15:00" />
+    <WorkEffortStatus workEffortId="SPR001" statusId="PRUN_RUNNING" statusDatetime="2021-09-01 12:15:00" />
+    <WorkEffortStatus workEffortId="SPRT01" statusId="PRUN_COMPLETED" statusDatetime="2021-09-01 12:15:00" />
+    <WorkEffortStatus workEffortId="SPRT02" statusId="PRUN_RUNNING" statusDatetime="2021-09-01 12:15:00" />
+    <WorkEffortStatus workEffortId="SPRT02" statusId="PRUN_COMPLETED" statusDatetime="2021-09-01 12:15:00" />
+    <WorkEffortStatus workEffortId="SPRT03" statusId="PRUN_RUNNING" statusDatetime="2021-09-01 12:15:00" />
+    <WorkEffortStatus workEffortId="SPRT03" statusId="PRUN_COMPLETED" statusDatetime="2021-09-01 12:15:00" />
+    <WorkEffortStatus workEffortId="SPRT04" statusId="PRUN_RUNNING" statusDatetime="2021-09-01 12:15:00" />
+    <WorkEffortStatus workEffortId="SPRT04" statusId="PRUN_COMPLETED" statusDatetime="2021-09-01 12:15:00" />
+    <WorkEffortStatus workEffortId="SPR001" statusId="PRUN_COMPLETED" statusDatetime="2021-09-01 12:15:00" />
+
+    <CostComponent costComponentId="CC1" costComponentTypeId="ACTUAL_MAT_COST" workEffortId="SPRT01" cost="145" costUomId="USD" />
 
 </entity-engine-xml>
