@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<entity-engine-xml>
+
+<!--    1st Product details-->
+    <!--     Createing new product data in Product entity -->
+    <Product productId="P001" productTypeId="RAW_MATERIAL" internalName="Wood" />
+    <Product productId="P002" productTypeId="RAW_MATERIAL" internalName="Nails" />
+    <Product productId="P003" productTypeId="RAW_MATERIAL" internalName="Varnish" />
+    <Product productId="P004" productTypeId="FINISHED_GOOD" internalName="Table" />
+
+    <!--     Add facilities of product in ProductFacility entity -->
+    <ProductFacility productId="P001" facilityId="WebStoreWarehouse" minimumStock="25" reorderQuantity="100" />
+    <ProductFacility productId="P002" facilityId="WebStoreWarehouse" minimumStock="100" reorderQuantity="500" />
+    <ProductFacility productId="P003" facilityId="WebStoreWarehouse" minimumStock="5" reorderQuantity="20" />
+    <ProductFacility productId="P004" facilityId="WebStoreWarehouse" minimumStock="5" />
+
+    <!--     Adding supplier detail of product in SupplierProduct entity-->
+    <SupplierProduct productId="P001" partyId="DemoSupplier" availableFromDate="2021-09-01 09:00:00" supplierPrefOrderId="10_MAIN_SUPPL" minimumOrderQuantity="0" lastPrice="11" currencyUomId="USD" supplierProductId="XYZWood"/>
+    <SupplierProduct productId="P002" partyId="DemoSupplier" availableFromDate="2021-09-01 09:00:00" supplierPrefOrderId="10_MAIN_SUPPL" minimumOrderQuantity="0" lastPrice="4" currencyUomId="USD" supplierProductId="123Nails" />
+    <SupplierProduct productId="P003" partyId="DemoSupplier" availableFromDate="2021-09-01 09:00:00" supplierPrefOrderId="10_MAIN_SUPPL" minimumOrderQuantity="0" lastPrice="5" currencyUomId="USD" supplierProductId="ABCVarnish" />
+
+    <!--    Setting up default price for table -->
+    <ProductPrice productId="P004" productPriceTypeId="DEFAULT_PRICE" productPricePurposeId="PURCHASE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2021-09-01 09:00:00" price="75"/>
+
+    <!--    Adding Bill of Materials of product in ProductAssoc entity-->
+    <ProductAssoc productId="P004" productIdTo="P001" productAssocTypeId="MANUF_COMPONENT" fromDate="2021-09-01 10:00:00" quantity="5" />
+    <ProductAssoc productId="P004" productIdTo="P002" productAssocTypeId="MANUF_COMPONENT" fromDate="2021-09-01 10:00:00" quantity="20" />
+    <ProductAssoc productId="P004" productIdTo="P003" productAssocTypeId="MANUF_COMPONENT" fromDate="2021-09-01 10:00:00" quantity="1" />
+
+    <!--    Adding Routing task in WorkEffort entity-->
+    <WorkEffort workEffortId="ROUT01" workEffortTypeId="ROU_TASK" currentStatusId="ROU_ACTIVE" workEffortPurposeTypeId="ROU_MANUFACTURING" workEffortName="Cut Wood" description="Cut Wood to Length" />
+    <WorkEffort workEffortId="ROUT02" workEffortTypeId="ROU_TASK" currentStatusId="ROU_ACTIVE" workEffortPurposeTypeId="ROU_MANUFACTURING" workEffortName="Nail Together" description="Nail wood Togather" />
+    <WorkEffort workEffortId="ROUT03" workEffortTypeId="ROU_TASK" currentStatusId="ROU_ACTIVE" workEffortPurposeTypeId="ROU_MANUFACTURING" workEffortName="Sand Togather" description="Sand the Table" />
+    <WorkEffort workEffortId="ROUT04" workEffortTypeId="ROU_TASK" currentStatusId="ROU_ACTIVE" workEffortPurposeTypeId="ROU_MANUFACTURING" workEffortName="Varnish Table" description="Varnish the Table" />
+
+    <!--    Adding Routing for Product processing in WorkEffort entity-->
+    <WorkEffort workEffortId="ROU01" workEffortTypeId="ROUTING" currentStatusId="ROU_ACTIVE" workEffortName="Table Routing" description="routing to make table" />
+
+    <!--    Adding Routing task Assoc in WorkEffortAssoc entity-->
+    <WorkEffortAssoc workEffortIdFrom="ROU01" workEffortIdTo="ROUT01" workEffortAssocTypeId="ROUTING_COMPONENT" sequenceNum="10" fromDate="2021-09-01 11:00:00" />
+    <WorkEffortAssoc workEffortIdFrom="ROU01" workEffortIdTo="ROUT02" workEffortAssocTypeId="ROUTING_COMPONENT" sequenceNum="20" fromDate="2021-09-01 11:00:00" />
+    <WorkEffortAssoc workEffortIdFrom="ROU01" workEffortIdTo="ROUT03" workEffortAssocTypeId="ROUTING_COMPONENT" sequenceNum="30" fromDate="2021-09-01 11:00:00" />
+    <WorkEffortAssoc workEffortIdFrom="ROU01" workEffortIdTo="ROUT04" workEffortAssocTypeId="ROUTING_COMPONENT" sequenceNum="40" fromDate="2021-09-01 11:00:00" />
+
+    <!--    Creating new Cost Component Calc in CostComponentCalc entity-->
+    <CostComponentCalc costComponentCalcId="CCC01" description="for Preparing Raw woods" fixedCost="25" currencyUomId="USD" />
+
+    <!--    Linking between Cost component calc and routing task in WorkEffortCostCalc-->;
+    <WorkEffortCostCalc workEffortId="ROUT01" costComponentTypeId="GEN_COST" costComponentCalcId="CCC01" fromDate="2021-09-01 12:05:00" />
+
+    <!--    Adding Routing Product Link in WorkEffortGoodStandard-->
+    <WorkEffortGoodStandard workEffortId="ROU01" productId="P004" workEffortGoodStdTypeId="ROU_PROD_TEMPLATE" fromDate="2021-09-01 12:00:00" />
+
+    <!--    Adding Production Run in WorkEffort Entity-->
+    <WorkEffort workEffortId="PR001" workEffortTypeId="PROD_ORDER_HEADER" currentStatusId="PRUN_CREATED" workEffortPurposeTypeId="WEPT_PRODUCTION_RUN" workEffortName="MRP_MRP2" facilityId="WebStoreWarehouse" quantityToProduce="5" />
+    <WorkEffort workEffortId="PRT01" workEffortTypeId="PROD_ORDER_TASK" currentStatusId="PRUN_CREATED" workEffortPurposeTypeId="WEPT_PRODUCTION_RUN" workEffortParentId="PR001" workEffortName="Cut Wood" priority="10" description="Cut Wood to Length" facilityId="WebStoreWarehouse" quantityToProduce="5" />
+    <WorkEffort workEffortId="PRT02" workEffortTypeId="PROD_ORDER_TASK" currentStatusId="PRUN_CREATED" workEffortPurposeTypeId="WEPT_PRODUCTION_RUN" workEffortParentId="PR001" workEffortName="Nail Togather" priority="20" description="Nail Wood Togather" facilityId="WebStoreWarehouse" quantityToProduce="5" />
+    <WorkEffort workEffortId="PRT03" workEffortTypeId="PROD_ORDER_TASK" currentStatusId="PRUN_CREATED" workEffortPurposeTypeId="WEPT_PRODUCTION_RUN" workEffortParentId="PR001" workEffortName="Sand Table" priority="30" description="Sand the Table" facilityId="WebStoreWarehouse" quantityToProduce="5" />
+    <WorkEffort workEffortId="PRT04" workEffortTypeId="PROD_ORDER_TASK" currentStatusId="PRUN_CREATED" workEffortPurposeTypeId="WEPT_PRODUCTION_RUN" workEffortParentId="PR001" workEffortName="Varnish Table" priority="40" description="Varnish the Table" facilityId="WebStoreWarehouse" quantityToProduce="5" />
+
+    <!--    Adding Production Good Standard in WorkEffortSoodStandard-->
+    <WorkEffortGoodStandard workEffortId="PR001" productId="P004" workEffortGoodStdTypeId="PRUN_PROD_DELIV" fromDate="2021-09-01 12:01:00" statusId="WEGS_CREATED" estimatedQuantity="5" />
+    <WorkEffortGoodStandard workEffortId="PRT01" productId="P001" workEffortGoodStdTypeId="PRUNT_PROD_NEEDED" fromDate="2021-09-01 12:05:00" statusId="WEGS_CREATED" estimatedQuantity="25" />
+    <WorkEffortGoodStandard workEffortId="PRT01" productId="P002" workEffortGoodStdTypeId="PRUNT_PROD_NEEDED" fromDate="2021-09-01 12:05:00" statusId="WEGS_CREATED" estimatedQuantity="100" />
+    <WorkEffortGoodStandard workEffortId="PRT01" productId="P003" workEffortGoodStdTypeId="PRUNT_PROD_NEEDED" fromDate="2021-09-01 12:05:00" statusId="WEGS_CREATED" estimatedQuantity="5" />
+
+    <!--    Adding new Item In Inventory in InventoryItem entity-->
+    <InventoryItem inventoryItemId="INV01" inventoryItemTypeId="NON_SERIAL_INV_ITEM" productId="P001" facilityId="WebStoreWarehouse" unitCost="20" currencyUomId="USD" quantityOnHandTotal="200" availableToPromiseTotal="200"/>
+    <InventoryItemDetail inventoryItemId="INV01" inventoryItemDetailSeqId="INVD01" effectiveDate="2021-09-01 11:15:00" quantityOnHandDiff="200" availableToPromiseDiff="200" accountingQuantityDiff="200" />
+
+    <InventoryItem inventoryItemId="INV02" inventoryItemTypeId="NON_SERIAL_INV_ITEM" productId="P002" facilityId="WebStoreWarehouse" unitCost="10" currencyUomId="USD" />
+    <InventoryItemDetail inventoryItemId="INV02" inventoryItemDetailSeqId="INVD02" effectiveDate="2021-09-01 11:15:00" quantityOnHandDiff="200" availableToPromiseDiff="200" accountingQuantityDiff="200" />
+
+    <InventoryItem inventoryItemId="INV03" inventoryItemTypeId="NON_SERIAL_INV_ITEM" productId="P003" facilityId="WebStoreWarehouse" unitCost="15" currencyUomId="USD" />
+    <InventoryItemDetail inventoryItemId="INV03" inventoryItemDetailSeqId="INVD03" effectiveDate="2021-09-01 11:15:00" quantityOnHandDiff="200" availableToPromiseDiff="200" accountingQuantityDiff="200" />
+
+
+<!--    2nd Product details-->
+    <!--    Createing New Product-->
+    <Product productId="demo01" productTypeId="RAW_MATERIAL" internalName="Cloth" />
+    <Product productId="demo02" productTypeId="RAW_MATERIAL" internalName="thread" />
+    <Product productId="demo03" productTypeId="RAW_MATERIAL" internalName="Cloth Color" />
+    <Product productId="demo04" productTypeId="RAW_MATERIAL" internalName="Pattern tool" />
+    <Product productId="demo05" productTypeId="FINISHED_GOOD" internalName="Shirt" />
+
+    <!--    Adding facilities to product-->
+    <ProductFacility productId="demo01" facilityId="WebStoreWarehouse" minimumStock="50" reorderQuantity="200" />
+    <ProductFacility productId="demo02" facilityId="WebStoreWarehouse" minimumStock="100" reorderQuantity="300" />
+    <ProductFacility productId="demo03" facilityId="WebStoreWarehouse" minimumStock="30" reorderQuantity="100" />
+    <ProductFacility productId="demo04" facilityId="WebStoreWarehouse" minimumStock="5" reorderQuantity="10" />
+    <ProductFacility productId="demo05" facilityId="WebStoreWarehouse" minimumStock="10" />
+
+    <!--    Adding Supplier to product-->
+    <SupplierProduct productId="demo01" partyId="DemoSupplier" availableFromDate="2021-09-02 09:00:00" supplierPrefOrderId="10_MAIN_SUPPL" minimumOrderQuantity="0" lastPrice="10" currencyUomId="USD" supplierProductId="ABCCloths" />
+    <SupplierProduct productId="demo02" partyId="DemoSupplier" availableFromDate="2021-09-02 09:00:00" supplierPrefOrderId="10_MAIN_SUPPL" minimumOrderQuantity="0" lastPrice="5" currencyUomId="USD" supplierProductId="A2ZThreads" />
+    <SupplierProduct productId="demo03" partyId="DemoSupplier" availableFromDate="2021-09-02 09:00:00" supplierPrefOrderId="10_MAIN_SUPPL" minimumOrderQuantity="0" lastPrice="7" currencyUomId="USD" supplierProductId="MultiColor" />
+    <SupplierProduct productId="demo04" partyId="DemoSupplier" availableFromDate="2021-09-02 09:00:00" supplierPrefOrderId="10_MAIN_SUPPL" minimumOrderQuantity="0" lastPrice="15" currencyUomId="USD" supplierProductId="ANYTOOL" />
+    <SupplierProduct productId="demo05" partyId="DemoSupplier" availableFromDate="2021-09-02 09:00:00" supplierPrefOrderId="10_MAIN_SUPPL" minimumOrderQuantity="0" lastPrice="30" currencyUomId="USD" supplierProductId="SHIRTHOUSE" />
+
+    <!--    Setting up default price for Product -->
+    <ProductPrice productId="demo05" productPriceTypeId="DEFAULT_PRICE" productPricePurposeId="PURCHASE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2021-09-01 09:00:00" price="50"/>
+
+    <!--    Adding Bill of Materials of product -->
+    <ProductAssoc productId="demo05" productIdTo="demo01" productAssocTypeId="MANUF_COMPONENT" fromDate="2021-09-01 09:30:00" quantity="2" />
+    <ProductAssoc productId="demo05" productIdTo="demo02" productAssocTypeId="MANUF_COMPONENT" fromDate="2021-09-01 09:30:00" quantity="5" />
+    <ProductAssoc productId="demo05" productIdTo="demo03" productAssocTypeId="MANUF_COMPONENT" fromDate="2021-09-01 09:30:00" quantity="3" />
+    <ProductAssoc productId="demo05" productIdTo="demo04" productAssocTypeId="MANUF_COMPONENT" fromDate="2021-09-01 09:30:00" quantity="1" />
+
+    <!--    Adding Routing task in WorkEffort entity-->
+    <WorkEffort workEffortId="SROUT01" workEffortTypeId="ROU_TASK" currentStatusId="ROU_ACTIVE" workEffortPurposeTypeId="ROU_MANUFACTURING" workEffortName="Cut Cloth" description="Cut the pieces of cloth" />
+    <WorkEffort workEffortId="SROUT02" workEffortTypeId="ROU_TASK" currentStatusId="ROU_ACTIVE" workEffortPurposeTypeId="ROU_MANUFACTURING" workEffortName="Sewing with thread" description="Sewing cloth with Thread" />
+    <WorkEffort workEffortId="SROUT03" workEffortTypeId="ROU_TASK" currentStatusId="ROU_ACTIVE" workEffortPurposeTypeId="ROU_MANUFACTURING" workEffortName="Coloring" description="Coloring the cloth" />
+    <WorkEffort workEffortId="SROUT04" workEffortTypeId="ROU_TASK" currentStatusId="ROU_ACTIVE" workEffortPurposeTypeId="ROU_MANUFACTURING" workEffortName="Draw Pattern" description="Draw Patterns in Shirt" />
+
+    <!--    Adding Routiung for product-->
+    <WorkEffort workEffortId="SROU01" workEffortTypeId="ROUTING" currentStatusId="ROU_ACTIVE" workEffortName="Shirt Routing" description="Routing to make Shirt" />
+
+    <!--    Adding routing task assoc with routing -->
+    <WorkEffortAssoc workEffortIdFrom="SROU01" workEffortIdTo="SROUT01" workEffortAssocTypeId="ROUTING_COMPONENT" sequenceNum="10" fromDate="2021-09-01 11:05:00" />
+    <WorkEffortAssoc workEffortIdFrom="SROU01" workEffortIdTo="SROUT02" workEffortAssocTypeId="ROUTING_COMPONENT" sequenceNum="20" fromDate="2021-09-01 11:05:00" />
+    <WorkEffortAssoc workEffortIdFrom="SROU01" workEffortIdTo="SROUT03" workEffortAssocTypeId="ROUTING_COMPONENT" sequenceNum="30" fromDate="2021-09-01 11:05:00" />
+    <WorkEffortAssoc workEffortIdFrom="SROU01" workEffortIdTo="SROUT04" workEffortAssocTypeId="ROUTING_COMPONENT" sequenceNum="40" fromDate="2021-09-01 11:05:00" />
+
+    <CostComponentCalc costComponentCalcId="CCC02" description="for Preparing Cloths" fixedCost="30" currencyUomId="USD" />
+
+    <!--    Linking between Cost component calc and routing task in WorkEffortCostCalc-->;
+    <WorkEffortCostCalc workEffortId="SROUT01" costComponentTypeId="GEN_COST" costComponentCalcId="CCC02" fromDate="2021-09-01 11:05:00" />
+
+    <!--    Adding Routing Product Link-->
+    <WorkEffortGoodStandard workEffortId="SROU01" productId="demo05" workEffortGoodStdTypeId="ROU_PROD_TEMPLATE" fromDate="2021-09-01 11:10:00" />
+
+
+
+
+
+
+    
+    <!--    Adding workEffortStauts-->
+    <WorkEffortStatus workEffortId="PR001" statusId="PRUN_CREATED" statusDatetime="2021-09-01 11:20:00" />
+    <WorkEffortStatus workEffortId="PR001" statusId="PRUN_RUNNING" statusDatetime="2021-09-01 11:20:00" />
+    <WorkEffortStatus workEffortId="PR001" statusId="PRUN_COMPLETED" statusDatetime="2021-09-01 11:20:00" />
+    <WorkEffortStatus workEffortId="PR001" statusId="PRUN_CLOSED" statusDatetime="2021-09-01 11:20:00" />
+
+    <WorkEffortStatus workEffortId="PRT04" statusId="PRUN_RUNNING" statusDatetime="2021-09-01 11:20:00" />
+    <WorkEffortStatus workEffortId="PRT01" statusId="PRUN_COMPLETED" statusDatetime="2021-10-01 15:50:00" />
+
+
+
+    <!--    Issueing Item though Production run creating record in InventoryItemDetail entity -->
+    <InventoryItemDetail inventoryItemId="INV01" inventoryItemDetailSeqId="00002" quantityOnHandDiff="-25" availableToPromiseDiff="-25" workEffortId="PRT02" />
+    <WorkEffortInventoryAssign workEffortId="PRT01" inventoryItemId="INV01" quantity="25" />
+
+
+    <!--    Creating record for assigning material to a Production Run from inventory-->
+    <WorkEffortInventoryAssign workEffortId="PRTO1" inventoryItemId="INV02" quantity="100" />
+    <!--    <WorkEffortInventoryAssign workEffortId="PRT01" inventoryItemId="INV03" quantity="5" />-->
+
+
+    <!-- PRT01-->
+    <WorkEffortCostCalc />
+    <CostComponent />
+    <CostComponent />
+
+    <InventoryItem />
+    <InventoryItemDetail />
+    <WorkEffortInventoryProduced />
+
+
+
+
+
+</entity-engine-xml>
