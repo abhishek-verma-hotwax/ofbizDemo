@@ -76,7 +76,6 @@
     <InventoryItemDetail inventoryItemId="INV03" inventoryItemDetailSeqId="INVD03" effectiveDate="2021-09-01 11:15:00" quantityOnHandDiff="200" availableToPromiseDiff="200" accountingQuantityDiff="200" />
 
 
-<<<<<<< HEAD
     <!--    2nd Product details-->
     <!--    Createing New Product-->
     <Product productId="demo01" productTypeId="RAW_MATERIAL" internalName="Cloth" />
@@ -189,7 +188,5 @@
     <WorkEffortStatus workEffortId="SPR001" statusId="PRUN_COMPLETED" statusDatetime="2021-09-01 12:15:00" />
 
     <CostComponent costComponentId="CC1" costComponentTypeId="ACTUAL_MAT_COST" workEffortId="SPRT01" cost="145" costUomId="USD" />
-=======
->>>>>>> dcb06211d5b390bd49388171df9991b5a9848f59
 
 </entity-engine-xml>
