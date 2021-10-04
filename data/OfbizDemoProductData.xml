@@ -188,5 +188,11 @@
     <WorkEffortStatus workEffortId="SPR001" statusId="PRUN_COMPLETED" statusDatetime="2021-09-01 12:15:00" />
 
     <CostComponent costComponentId="CC1" costComponentTypeId="ACTUAL_MAT_COST" workEffortId="SPRT01" cost="145" costUomId="USD" />
+    <CostComponent costComponentId="CC2" costComponentTypeId="GEN_COST" workEffortId="SPRT01" cost="30" costUomId="USD" />
 
+    <InventoryItem inventoryItemId="INV10" inventoryItemTypeId="NON_SERIAL_INV_ITEM" productId="demo05" datetimeReceived="2021-09-02 09:00:00" datetimeManufactured="2021-09-02 09:00:00" facilityId="WebStoreWarehouse" quantityOnHandTotal="1" availableToPromiseTotal="1" accountingQuantityTotal="1" unitCost="145" currencyUomId="USD" />
+    <InventoryItemDetail inventoryItemId="INV10" inventoryItemDetailSeqId="INVD10" effectiveDate="2021-09-02 09:00:00" quantityOnHandDiff="1" availableToPromiseDiff="1" accountingQuantityDiff="0" />
+
+    <WorkEffortInventoryProduced workEffortId="SPR001" inventoryItemId="INV10" />
+    
 </entity-engine-xml>
