@@ -70,4 +70,25 @@ under the License.
         <field name="lastName" title="${uiLabelMap.OfbizDemoLastName}" sort-field="true"><display/></field>
         <field name="comments" title="${uiLabelMap.OfbizDemoComment}"><display/></field>
     </form>
+
+    <form name="createProductionRun" type="single" default-entity-name="WorkEffort">
+        <field name="productId"><text/></field>
+        <field name="quantity"><text/></field>
+        <field name="startDate"><date-time/></field>
+        <field name="facilityId" >
+            <drop-down allow-empty="false">
+                <entity-options description="${facilityName}[${facilityId}]" entity-name="Facility" key-field-name="facilityName">
+                </entity-options>
+            </drop-down>
+        </field>
+        <field name="routingId"><text/></field>
+        <field name="productionRunName"><text/></field>
+        <field name="description"><text/></field>
+        <field name="createDependentProductionRuns">
+            <drop-down allow-empty="false">
+                <option key="Yes"></option>
+                <option key="No"></option>
+            </drop-down>
+        </field>
+    </form>
 </forms>

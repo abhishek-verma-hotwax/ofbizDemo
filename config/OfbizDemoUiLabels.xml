@@ -51,4 +51,10 @@ under the License.
     <property key="OfbizDemoLastName">
         <value xml:lang="en">Last Name</value>
     </property>
+    <property key="JobShopForm">
+        <value xml:lang="en">Job Shop</value>
+    </property>
+    <property key="OfbizCreateProduction">
+        <value xml:lang="en">Crate Production Run</value>
+    </property>
 </resource>
