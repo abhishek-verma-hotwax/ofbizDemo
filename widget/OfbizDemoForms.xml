@@ -71,18 +71,18 @@ under the License.
         <field name="comments" title="${uiLabelMap.OfbizDemoComment}"><display/></field>
     </form>
 
-    <form name="createProductionRun" type="single" default-entity-name="WorkEffort">
-        <field name="productId"><text/></field>
-        <field name="quantity"><text/></field>
+    <form name="CreateProductionRun" type="single" default-entity-name="WorkEffort" target="createProductionRun">
+        <field name="productId"><lookup target-form-name="LookupProduct" /></field>
+        <field name="pRQuantity"><text/></field>
         <field name="startDate"><date-time/></field>
         <field name="facilityId" >
             <drop-down allow-empty="false">
-                <entity-options description="${facilityName}[${facilityId}]" entity-name="Facility" key-field-name="facilityName">
+                <entity-options description="${facilityName}[${facilityId}]" entity-name="Facility" key-field-name="facilityId">
                 </entity-options>
             </drop-down>
         </field>
-        <field name="routingId"><text/></field>
-        <field name="productionRunName"><text/></field>
+        <field name="routingId"><lookup target-form-name="LookupRouting" /></field>
+        <field name="WorkEffortName"><text/></field>
         <field name="description"><text/></field>
         <field name="createDependentProductionRuns">
             <drop-down allow-empty="false">
@@ -90,5 +90,6 @@ under the License.
                 <option key="No"></option>
             </drop-down>
         </field>
+        <field name="submitButton" title="${uiLabelMap.Submit}"><submit button-type="button"/></field>
     </form>
 </forms>

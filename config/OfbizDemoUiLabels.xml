@@ -54,7 +54,10 @@ under the License.
     <property key="JobShopForm">
         <value xml:lang="en">Job Shop</value>
     </property>
-    <property key="OfbizCreateProduction">
+    <property key="createProduction">
         <value xml:lang="en">Crate Production Run</value>
+    </property>FindProductionRun
+    <property key="FindProductionRun">
+        <value xml:lang="en">Find Production Run</value>
     </property>
 </resource>
