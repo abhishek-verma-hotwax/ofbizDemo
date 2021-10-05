@@ -97,18 +97,33 @@ under the License.
             </widgets>
         </section>
     </screen>
-    <screen name="jobProduction">
+    <screen name="CreateProductionRun">
         <section>
             <actions>
-                <set field="titleProperty" value="AddProductionRun"/>
+                <set field="titleProperty" value="CreateProductionRun"/>
                 <set field="headerItem" value="jobshopxml" />
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
-                        <screenlet title="${uiLabelMap.OfbizCreateProduction}">
-                            <include-form name="createProductionRun" location="component://ofbizDemo/widget/OfbizDemoForms.xml"/>
+                        <screenlet title="${uiLabelMap.createProduction}">
+                            <include-form name="CreateProductionRun" location="component://ofbizDemo/widget/OfbizDemoForms.xml"/>
                         </screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>FindProductionRun
+    <screen name="FindProductionRun">
+        <section>
+            <actions>
+                <set field="titleProperty" value="FindProductionRun"/>
+                <set field="headerItem" value="findProductionRunxml" />
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <label text="hello" />
                     </decorator-section>
                 </decorator-screen>
             </widgets>

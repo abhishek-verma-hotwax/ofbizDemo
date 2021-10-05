@@ -23,7 +23,8 @@ under the License.
         <menu-item name="main" title="${uiLabelMap.CommonMain}"><link target="main"/></menu-item>
         <menu-item name="findOfbizDemo" title="${uiLabelMap.OfbizDemoFind}"><link target="FindOfbizDemo"/></menu-item>
         <menu-item name="addOfbizDemoFtl" title="${uiLabelMap.OfbizDemoAddFtl}"><link target="AddOfbizDemoFtl"/></menu-item>
-        <menu-item name="jobshopxml" title="${uiLabelMap.JobShopForm}" ><link target="jobproduction"/></menu-item>
+        <menu-item name="jobshopxml" title="${uiLabelMap.createProduction}" ><link target="CreateProductionRun"/></menu-item>
+        <menu-item name="findProductionRunxml" title="${uiLabelMap.FindProductionRun}" ><link target="FindProductionRun"/></menu-item>
 
     </menu>
 </menus>
