@@ -119,11 +119,17 @@ under the License.
             <actions>
                 <set field="titleProperty" value="FindProductionRun"/>
                 <set field="headerItem" value="findProductionRunxml" />
+                <entity-and entity-name="Facility" list="facilities" />
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
-                        <label text="hello" />
+                        <platform-specific>
+                            <html><html-template location="component://ofbizDemo/webapp/ofbizDemo/productionRun/FindProductionRun.ftl"/></html>
+                        </platform-specific>
+                        <platform-specific>
+                            <html><html-template location="component://ofbizDemo/webapp/ofbizDemo/productionRun/ListProductionRun.ftl"/></html>
+                        </platform-specific>
                     </decorator-section>
                 </decorator-screen>
             </widgets>
