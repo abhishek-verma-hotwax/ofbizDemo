@@ -83,7 +83,26 @@ under the License.
         <security https="true" auth="true" />
         <response name="success" type="view" value="FindProductionRun"></response>
     </request-map>
-
+    <request-map uri="CreateProductionRunByJavaScreen">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="CreateProductionRunByJavascreen"/>
+    </request-map>
+    <request-map uri="CreateProductionRunByEventScreen">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="CreateProductionRunByEventscreen"/>
+    </request-map>
+    <request-map uri="CreateProductionRunByGroovyScreen">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="CreateProductionRunByGroovyscreen"/>
+    </request-map>
+    <request-map uri="createProductionRunByJavaService">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="createProductionRunByJavaService"/>
+        <response name="success" type="view" value="FindProductionRun">
+            <redirect-parameter name="workEffortId" from="productionRunId"/>
+        </response>
+        <response name="error" type="view" value="CreateProductionRunByJavascreen"/>
+    </request-map>
     <!-- View Mappings -->
     <view-map name="main" type="screen" page="component://ofbizDemo/widget/OfbizDemoScreens.xml#main"/>
     <view-map name="FindOfbizDemo" type="screen" page="component://ofbizDemo/widget/OfbizDemoScreens.xml#FindOfbizDemo"/>
@@ -92,6 +111,7 @@ under the License.
     <view-map name="FindProductionRun" type="screen" page="component://ofbizDemo/widget/OfbizDemoScreens.xml#FindProductionRun"/>
     <view-map name="LookupProduct" type="screen" page="component://product/widget/catalog/LookupScreens.xml#LookupProduct"/>
     <view-map name="LookupRouting" type="screen" page="component://manufacturing/widget/manufacturing/LookupScreens.xml#LookupRouting"/>
-
-
+    <view-map name="CreateProductionRunByJavascreen" type="screen" page="component://ofbizDemo/widget/OfbizDemoScreens.xml#CreateProductionRunByJava"/>
+    <view-map name="CreateProductionRunByEventscreen" type="screen" page="component://ofbizDemo/widget/OfbizDemoScreens.xml#CreateProductionRunByEvent"/>
+    <view-map name="CreateProductionRunByGroovyscreen" type="screen" page="component://ofbizDemo/widget/OfbizDemoScreens.xml#CreateProductionRunByGroovy"/>
 </site-conf>
