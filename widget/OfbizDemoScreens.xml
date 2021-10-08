@@ -106,20 +106,24 @@ under the License.
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
-                        <screenlet title="${uiLabelMap.createProduction}">
+                        <screenlet title="${uiLabelMap.CreateProductionRun}">
                             <include-form name="CreateProductionRun" location="component://ofbizDemo/widget/OfbizDemoForms.xml"/>
                         </screenlet>
                     </decorator-section>
                 </decorator-screen>
             </widgets>
         </section>
-    </screen>FindProductionRun
+    </screen>
     <screen name="FindProductionRun">
         <section>
             <actions>
                 <set field="titleProperty" value="FindProductionRun"/>
                 <set field="headerItem" value="findProductionRunxml" />
                 <entity-and entity-name="Facility" list="facilities" />
+                <entity-and entity-name="StatusItem" list="statusItems">
+                    <field-map field-name="statusTypeId" value="PRODUCTION_RUN"/>
+                </entity-and>
+                <script location="component://ofbizDemo/groovyScripts/FindProductionRun.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">

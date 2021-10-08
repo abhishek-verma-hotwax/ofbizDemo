@@ -54,15 +54,65 @@ under the License.
     <property key="JobShopForm">
         <value xml:lang="en">Job Shop</value>
     </property>
-<<<<<<< HEAD
-    <property key="createProduction">
+    <property key="CreateProductionRun">
         <value xml:lang="en">Crate Production Run</value>
-    </property>FindProductionRun
+    </property>
     <property key="FindProductionRun">
         <value xml:lang="en">Find Production Run</value>
-=======
-    <property key="OfbizCreateProduction">
-        <value xml:lang="en">Crate Production Run</value>
->>>>>>> f113a1f3045c392809b36444e62d3e4a9c4433e6
     </property>
+    <property key="ProductionRunId">
+        <value xml:lang="en">Production Run ID</value>
+    </property>
+    <property key="Status">
+        <value xml:lang="en">Status</value>
+    </property>
+    <property key="ProductId">
+        <value xml:lang="en">Product ID</value>
+    </property>
+    <property key="ProductionRunName">
+        <value xml:lang="en">Production Run Name</value>
+    </property>
+    <property key="StartDate">
+        <value xml:lang="en">Start Date</value>
+    </property>
+    <property key="FacilityId">
+        <value xml:lang="en">Facility ID</value>
+    </property>
+    <property key="SearchOption">
+        <value xml:lang="en">Search Option</value>
+    </property>
+    <property key="SearchResult">
+        <value xml:lang="en">Search Result</value>
+    </property>
+    <property key="Description">
+        <value xml:lang="en">Description</value>
+    </property>
+    <property key="Status">
+        <value xml:lang="en">Status</value>
+    </property>
+    <property key="Quantity">
+        <value xml:lang="en">Quantity</value>
+    </property>
+    <property key="QuantityUOM">
+        <value xml:lang="en">Quantity UOM</value>
+    </property>
+    <property key="RoutingId">
+        <value xml:lang="en">Routing ID</value>
+    </property>
+    <property key="WorkEffortName">
+        <value xml:lang="en">Work Effort Name</value>
+    </property>
+    <property key="CreateDependentProductionRuns">
+        <value xml:lang="en">Create Dependent Production Runs</value>
+    </property>
+    <property key="CreateProductionRunByJava">
+        <value xml:lang="en">Create Production Run By Java</value>
+    </property>
+    <property key="CreateProductionRunByEvent">
+        <value xml:lang="en">Create Production Run By Event</value>
+    </property>
+    <property key="CreateProductionRunByGroovy">
+        <value xml:lang="en">Create Production Run By Groovy</value>
+    </property>
+
 </resource>

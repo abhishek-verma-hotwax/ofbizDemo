@@ -72,24 +72,18 @@ under the License.
     </form>
 
     <form name="CreateProductionRun" type="single" default-entity-name="WorkEffort" target="createProductionRun">
-        <field name="productId"><lookup target-form-name="LookupProduct" /></field>
-        <field name="pRQuantity"><text/></field>
-        <field name="startDate"><date-time/></field>
-        <field name="facilityId" >
+        <field name="productId" title="${uiLabelMap.ProductId}"><lookup target-form-name="LookupProduct" /></field>
+        <field name="pRQuantity" title="${uiLabelMap.Quantity}"><text/></field>
+        <field name="startDate" title="${uiLabelMap.StartDate}"><date-time/></field>
+        <field name="facilityId" title="${uiLabelMap.FacilityId}">
             <drop-down allow-empty="false">
                 <entity-options description="${facilityName}[${facilityId}]" entity-name="Facility" key-field-name="facilityId">
                 </entity-options>
             </drop-down>
         </field>
-        <field name="routingId"><lookup target-form-name="LookupRouting" /></field>
-        <field name="WorkEffortName"><text/></field>
-        <field name="description"><text/></field>
-        <field name="createDependentProductionRuns">
-            <drop-down allow-empty="false">
-                <option key="Yes"></option>
-                <option key="No"></option>
-            </drop-down>
-        </field>
-        <field name="submitButton" title="${uiLabelMap.Submit}"><submit button-type="button"/></field>
+        <field name="routingId" title="${uiLabelMap.RoutingId}"><lookup target-form-name="LookupRouting" /></field>
+        <field name="WorkEffortName" title="${uiLabelMap.WorkEffortName}"><text/></field>
+        <field name="description" title="${uiLabelMap.Description}"><text/></field>
+        <field name="submitButton" title="Submit"><submit button-type="button"/></field>
     </form>
 </forms>
