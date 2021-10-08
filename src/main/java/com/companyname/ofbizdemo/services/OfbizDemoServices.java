@@ -1,11 +1,15 @@
 package com.companyname.ofbizdemo.services;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.ofbiz.base.util.Debug;
 import org.apache.ofbiz.entity.Delegator;
 import org.apache.ofbiz.entity.GenericEntityException;
 import org.apache.ofbiz.entity.GenericValue;
+import org.apache.ofbiz.manufacturing.jobshopmgt.ProductionRunServices;
 import org.apache.ofbiz.service.DispatchContext;
+import org.apache.ofbiz.service.GenericServiceException;
+import org.apache.ofbiz.service.ModelService;
 import org.apache.ofbiz.service.ServiceUtil;
 
 public class OfbizDemoServices {
@@ -28,6 +32,21 @@ public class OfbizDemoServices {
         } catch (GenericEntityException e) {
             Debug.logError(e, module);
             return ServiceUtil.returnError("Error in creating record in OfbizDemo entity ........" +module);
+        }
+        return result;
+    }
+
+    public static Map<String, Object> createProductionRunJava(DispatchContext dctx, Map<String, ? extends Object> context) {
+        Map<String, Object> result = ServiceUtil.returnSuccess();
+        Map<String, Object> createProductionRunMap = new HashMap<>();
+
+        try {
+            createProductionRunMap = dctx.getModelService("createProductionRun").makeValid(context, ModelService.IN_PARAM);
+            Debug.log("============"+createProductionRunMap);
+            ProductionRunServices.createProductionRun(dctx,createProductionRunMap);
+        } catch (GenericServiceException e) {
+            Debug.log(e, module);
+            return ServiceUtil.returnError("Error in creating record in WorkEffort entity ........" +module);
         }
         return result;
     }

@@ -25,6 +25,8 @@ under the License.
         <menu-item name="addOfbizDemoFtl" title="${uiLabelMap.OfbizDemoAddFtl}"><link target="AddOfbizDemoFtl"/></menu-item>
         <menu-item name="jobshopxml" title="${uiLabelMap.CreateProductionRun}" ><link target="CreateProductionRun"/></menu-item>
         <menu-item name="findProductionRunxml" title="${uiLabelMap.FindProductionRun}" ><link target="FindProductionRun"/></menu-item>
-
+        <menu-item name="createproductionRunByJava" title="${uiLabelMap.CreateProductionRunByJava}" ><link target="CreateProductionRunByJavaScreen" /></menu-item>
+        <menu-item name="createproductionRunByEvent" title="${uiLabelMap.CreateProductionRunByEvent}" ><link target="CreateProductionRunByEventScreen" /></menu-item>
+        <menu-item name="createproductionRunByGroovy" title="${uiLabelMap.CreateProductionRunByGroovy}" ><link target="CreateProductionRunByGroovyScreen" /></menu-item>
     </menu>
 </menus>
