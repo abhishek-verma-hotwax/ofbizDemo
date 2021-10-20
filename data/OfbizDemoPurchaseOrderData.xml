@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<entity-engine-xml>
+
+<!--    Created new product for creating new purchase order for it -->
+    <Product productId="BK01" productTypeId="FINISHED_GOOD" internalName="mouse" productName="Mouse" />
+    <SupplierProduct productId="BK01" partyId="10020" availableFromDate="2021-10-15 09:00:00" supplierPrefOrderId="10_MAIN_SUPPL" minimumOrderQuantity="0" lastPrice="25" currencyUomId="USD" supplierProductId="quantum"/>
+
+<!--    Created new Contact mech for setting a shipping address -->
+    <ContactMech contactMechId="10024" contactMechTypeId="POSTAL_ADDRESS" />
+    <PostalAddress contactMechId="10024" toName="Palash Bajaj" address1="80, Vijay Nagar" city="Indore" postalCode="452001" countryGeoId="IND" stateProvinceGeoId="IN-MP" />
+
+<!--    Purchase Order related data for entities-->
+    <OrderHeader orderId="10018" orderTypeId="PURCHASE_ORDER" orderName="mouse Order" orderDate="2021-10-16 09:00:00" statusId="ORDER_CREATED" currencyUom="USD" remainingSubTotal="750" grandTotal="755"/>
+    <OrderItem orderId="10018" orderItemSeqId="00002" orderItemTypeId="PRODUCT_ORDER_ITEM" productId="BK01" supplierProductId="quantum" prodCatelogId="DemoCatelog" quantity="30" unitPrice="25" itemDescription="Mouse" statusId="ITEM_CREATED"/>
+    <OrderItemShipGroup orderId="10018" shipGroupSeqId="00001" shipmentMethodTypeId="STANDARD" carrierRoleTypeId="CARRIER" facilityId="WebStoreWarehouse" contactMechId="10024"/>
+    <OrderItemShipGroupAssoc orderId="10018" orderItemSeqId="00002" shipGroupSeqId="00001" quantity="30" />
+    <OrderContactMech orderId="10018" contactMechPurposeTypeId="SHIPPING_LOCATION" contactMechId="10024" />
+    <OrderRole orderId="10018" partyId="10020" roleTypeId="SUPPLIER_AGENT" />
+    <OrderTerm termTypeId="FIN_PAYMENT_TERM" orderId="10018" orderItemSeqId="_NA_" termDays="5" textValue="Payment done in 5 days" description="payment for mouse" />
+
+</entity-engine-xml>

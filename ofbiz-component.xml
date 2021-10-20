@@ -36,9 +36,8 @@ under the License.
     <entity-resource type="data" reader-name="demo" loader="main" location="data/OfbizDemoSecurityGroupDemoData.xml"/>
     <entity-resource type="data" reader-name="demo" loader="main" location="data/OfbizDemoDemoData.xml"/>
 <!--    <entity-resource type="data" reader-name="demo" loader="main" location="data/OfbizDemoProductData.xml"/>-->
+<!--    <entity-resource type="data" reader-name="demo" loader="main" location="data/OfbizDemoPurchaseOrderData.xml"/>-->
 
-
-    OfbizDemoProductData
     <!-- service resources: model(s), eca(s) and group definitions -->
     <service-resource type="model" loader="main" location="servicedef/services.xml"/>
     <!--
