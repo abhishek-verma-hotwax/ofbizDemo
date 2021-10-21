@@ -32,9 +32,9 @@
                             <#list facilities as facility>
                                 <option value="${facility.facilityId!}">${facility.facilityName}[${facility.facilityId}]</option>
                             </#list>
-                            </select>
-                        </td>
-                    </tr>
+                        </select>
+                    </td>
+                </tr>
                 <tr>
                     <td width="15%" align="right"><span class="label" >${uiLabelMap.RoutingId}</span></td>
                     <td width="2%"></td>

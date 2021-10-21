@@ -1,5 +1,6 @@
 package com.companyname.ofbizdemo.events;
 
+import javax.jws.Oneway;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,6 +11,12 @@ import org.apache.ofbiz.entity.Delegator;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.service.GenericServiceException;
 import org.apache.ofbiz.service.LocalDispatcher;
+import org.apache.ofbiz.service.ServiceUtil;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class OfbizDemoEvents {
 
@@ -32,8 +39,10 @@ public class OfbizDemoEvents {
         String comments = request.getParameter("comments");
 
         try {
-            Debug.logInfo("=======Creating OfbizDemo record in event using service createOfbizDemoByGroovyService=========", module);
-            dispatcher.runSync("createOfbizDemoByGroovyService", UtilMisc.toMap("ofbizDemoTypeId", ofbizDemoTypeId,
+            Debug.logInfo("=======Creating OfbizDemo record in event using" +
+                    " service createOfbizDemoByGroovyService=========", module);
+            dispatcher.runSync("createOfbizDemoByGroovyService", UtilMisc.toMap("ofbizDemoTypeId",
+                    ofbizDemoTypeId,
                     "firstName", firstName, "lastName", lastName, "comments", comments, "userLogin", userLogin));
         } catch (GenericServiceException e) {
             String errMsg = "Unable to create new records in OfbizDemo entity: " + e.toString();
@@ -41,6 +50,71 @@ public class OfbizDemoEvents {
             return "error";
         }
         request.setAttribute("_EVENT_MESSAGE_", "OFBiz Demo created succesfully.");
+        return "success";
+    }
+
+    public static String createProductionRunEvent(HttpServletRequest request, HttpServletResponse response) {
+        Delegator delegator = (Delegator) request.getAttribute("delegator");
+        LocalDispatcher dispatcher = (LocalDispatcher) request.getAttribute("dispatcher");
+        GenericValue userLogin = (GenericValue) request.getSession().getAttribute("userLogin");
+
+        String productId = request.getParameter("productId");
+        String pRQuantity = request.getParameter("pRQuantity");
+        String startDate = request.getParameter("startDate");
+        String facilityId = request.getParameter("facilityId");
+        String routingId = request.getParameter("routingId");
+        String workEffortName = request.getParameter("workEffortName");
+        String description = request.getParameter("description");
+
+
+        List<String> errorMsgList = new ArrayList<>();
+        String errorMsg;
+
+        if (UtilValidate.isEmpty(productId)) {
+            errorMsg = "Product Id is Missing";
+            errorMsgList.add(errorMsg);
+        }
+        if (UtilValidate.isEmpty(pRQuantity)) {
+            errorMsg = "Quantity is Missing";
+            errorMsgList.add(errorMsg);
+        }
+        if (UtilValidate.isEmpty(startDate)) {
+            errorMsg = "StartDate is Missing";
+            errorMsgList.add(errorMsg);
+        }
+        if (UtilValidate.isAlphanumeric(pRQuantity)) {
+            errorMsg = "Invalid Quantity";
+            errorMsgList.add(errorMsg);
+        }
+        if (UtilValidate.isNotEmpty(errorMsgList)) {
+            request.setAttribute("_ERROR_MESSAGE_LIST_", errorMsgList);
+            return "error";
+        }
+
+        try {
+            Map<String, Object> createProductionRunMap = new HashMap<>();
+            createProductionRunMap.put("userLogin", userLogin);
+            createProductionRunMap.put("productId", productId);
+            createProductionRunMap.put("pRQuantity", pRQuantity);
+            createProductionRunMap.put("startDate", startDate);
+            createProductionRunMap.put("facilityId", facilityId);
+            createProductionRunMap.put("routingId", routingId);
+            createProductionRunMap.put("workEffortName", workEffortName);
+            createProductionRunMap.put("description", description);
+            Map<String, Object> resultsMap = dispatcher.runSync("createProductionRunByJavaService",
+                    createProductionRunMap);
+            if (ServiceUtil.isError(resultsMap)) {
+                request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(resultsMap));
+                return "error";
+            }
+            String productionRunId = (String) resultsMap.get("productionRunId");
+            request.setAttribute("productionRunId", productionRunId);
+        } catch (GenericServiceException e) {
+            Debug.logInfo("Error", module, e);
+            request.setAttribute("_ERROR_MESSAGE_", e.getMessage());
+            return "error";
+        }
+
         return "success";
     }
 }
