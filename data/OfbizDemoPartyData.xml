@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<entity-engine-xml>
+
+<!--    Created Supplier Data -->
+    <Party partyId="11000" partyTypeId="PERSON" preferredCurrencyUomId="USD" statusId="PARTY_ENABLED" createdDate="2021-10-20 09:00:00" />
+    <PartyGroup partyId="11000" groupName="ABC Goups" />
+    <PartyRole partyId="11000" roleTypeId="SHIP_FROM_VENDOR" />
+    <PartyRole partyId="11000" roleTypeId="BILL_FROM_VENDOR" />
+    <PartyRole partyId="11000" roleTypeId="SUPPLIER" />
+    <PartyRole partyId="11000" roleTypeId="SUPPLIER_AGENT" />
+
+    <ContactMech contactMechId="10031" contactMechTypeId="EMAIL_ADDRESS" infoString="info@abcGroups.com" />
+    <PartyContactMech partyId="11000" contactMechId="10031" fromDate="2021-10-20 09:00:00" />
+    <PartyContactMechPurpose partyId="11000" contactMechId="10031" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2021-10-20 09:05:00"/>
+
+    <ContactMech contactMechId="10032" contactMechTypeId="POSTAL_ADDRESS" />
+    <PartyContactMech partyId="11000" contactMechId="10032" fromDate="2021-10-20 09:00:00" />
+    <PostalAddress contactMechId="10032" toName="ABC Logistics" address1="78 vijay Nagar" city="Indore" postalCode="452001" countryGeoId="IND" stateProvinceGeoId="IN-MP" />
+    <PartyContactMechPurpose partyId="11000" contactMechId="10032" contactMechPurposeTypeId="SHIP_ORIG_LOCATION" fromDate="2021-10-20 09:05:00" />
+
+    <ContactMech contactMechId="10033" contactMechTypeId="POSTAL_ADDRESS" />
+    <PartyContactMech partyId="11000" contactMechId="10033" fromDate="2021-10-20 09:00:00" />
+    <PostalAddress contactMechId="10033" toName="ABC world" address1="54 rao Nagar" city="Dewas" postalCode="123456" countryGeoId="IND" stateProvinceGeoId="IN-MP" />
+    <PartyContactMechPurpose partyId="11000" contactMechId="10033" contactMechPurposeTypeId="GENERAL_LOCATION" fromDate="2021-10-20 09:05:00" />
+    <PartyContactMechPurpose partyId="11000" contactMechId="10033" contactMechPurposeTypeId="BILLING_LOCATION" fromDate="2021-10-20 09:05:00" />
+
+    <ContactMech contactMechId="10034" contactMechTypeId="TELECOM_NUMBER" />
+    <PartyContactMech partyId="11000" contactMechId="10034" fromDate="2021-10-20 09:00:00" />
+    <TelecomNumber contactMechId="10034" countryCode="91" contactNumber="9988776655" />
+    <PartyContactMechPurpose partyId="11000" contactMechId="10034" contactMechPurposeTypeId="PRIMARY_PHONE" fromDate="2021-10-20 09:05:00" />
+
+    <ContactMech contactMechId="10035" contactMechTypeId="TELECOM_NUMBER" />
+    <PartyContactMech partyId="11000" contactMechId="10035" fromDate="2021-10-20 09:00:00" />
+    <TelecomNumber contactMechId="10035" countryCode="91" contactNumber="9944332211" />
+    <PartyContactMechPurpose partyId="11000" contactMechId="10035" contactMechPurposeTypeId="PHONE_SHIP_ORIG" fromDate="2021-10-20 09:05:00" />
+
+</entity-engine-xml>
