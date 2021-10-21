@@ -6,7 +6,7 @@
         <br/>
     </div>
     <div class="screenlet-body">
-        <form name="CreateProductionRunFromByEvent" method="post" action="<@ofbizUrl></@ofbizUrl>">
+        <form name="CreateProductionRunFromByEvent" method="post" action="<@ofbizUrl>createProductionRunByGroovyService</@ofbizUrl>">
             <table width="100%">
                 <tr>
                     <td width="15%" align="right"><span class="label" >${uiLabelMap.ProductId}</span></td>
@@ -17,12 +17,12 @@
                 <tr>
                     <td width="15%" align="right"><span class="label" >${uiLabelMap.Quantity}</span></td>
                     <td width="2%"></td>
-                    <td width="83%"><input type="text" name="quantityToProduce"/></td>
+                    <td width="83%"><input type="text" name="pRQuantity"/></td>
                 </tr>
                 <tr>
                     <td width="15%" align="right"><span class="label" >${uiLabelMap.StartDate}</span></td>
                     <td width="2%"></td>
-                    <td width="83%"><@htmlTemplate.renderDateTimeField name="estimatedStartDate" event="" action="" className="" alert="" title="Format: yyyy-MM-dd HH:mm:ss.SSS" value="${parameters.estimatedStartDate!}" size="" maxlength="50" id="fromDate_1" dateType="date" shortDateInput=false timeDropdownParamName="" defaultDateTimeString="" localizedIconTitle="" timeDropdown="" timeHourName="" classString="" hour1="" hour2="" timeMinutesName="" minutes="" isTwelveHour="" ampmName="" amSelected="" pmSelected="" compositeType="" formName=""/></td>
+                    <td width="83%"><@htmlTemplate.renderDateTimeField name="startDate" event="" action="" className="" alert="" title="Format: yyyy-MM-dd HH:mm:ss.SSS" value="${parameters.estimatedStartDate!}" size="" maxlength="50" id="fromDate_1" dateType="date" shortDateInput=false timeDropdownParamName="" defaultDateTimeString="" localizedIconTitle="" timeDropdown="" timeHourName="" classString="" hour1="" hour2="" timeMinutesName="" minutes="" isTwelveHour="" ampmName="" amSelected="" pmSelected="" compositeType="" formName=""/></td>
                 </tr>
                 <tr>
                     <td width="15%" align="right"><span class="label">${uiLabelMap.FacilityId}</span></td>
