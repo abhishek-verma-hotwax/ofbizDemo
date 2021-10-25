@@ -35,11 +35,30 @@
     <InventoryItemDetail inventoryItemId="7500" inventoryItemDetailSeqId="7551" effectiveDate="2021-10-23 7:00:00" qunatityOnHandDiff="30" availableToPromiseDiff="30" accountingQuantityDiff="0" unitCost="25" orderId="10018" orderItemSeqId="00002" shipmentId="7000" receiptId="8000" />
     <InventoryItemDetail inventoryItemId="7500" inventoryItemDetailSeqId="7552" effectiveDate="2021-10-23 7:00:00" qunatityOnHandDiff="0" availableToPromiseDiff="0" accountingQuantityDiff="30" unitCost="25" />
 
-    <OrderStatus orderStatusId="6700" statusId="ORDER_CREATED" orderId="10018" />
-    <OrderStatus orderStatusId="6701" statusId="ITEM_CREATED" orderId="10018" orderItemSeqId="00002" />
-    <OrderStatus orderStatusId="6700" statusId="ORDER_APPROVED" orderId="10018" />
-    <OrderStatus orderStatusId="6701" statusId="ITEM_APPROVED" orderId="10018" orderItemSeqId="00002" />
-    <OrderStatus orderStatusId="6702" statusId="ITEM_COMPLETED" orderId="10018" orderItemSeqId="00002" />
-    <OrderStatus orderStatusId="6703" statusId="ORDER_COMPLETED" orderId="10018" />
+    <OrderStatus orderStatusId="6700" statusId="ORDER_CREATED" orderId="10018" statusDatetime="2021-10-23 11:00:00" statusUserLogin="admin" />
+    <OrderStatus orderStatusId="6701" statusId="ITEM_CREATED" orderId="10018" orderItemSeqId="00002" statusDatetime="2021-10-23 11:00:00" statusUserLogin="admin" />
+    <OrderStatus orderStatusId="6700" statusId="ORDER_APPROVED" orderId="10018" statusDatetime="2021-10-23 11:00:00" statusUserLogin="admin" />
+    <OrderStatus orderStatusId="6701" statusId="ITEM_APPROVED" orderId="10018" orderItemSeqId="00002" statusDatetime="2021-10-23 11:00:00" statusUserLogin="admin" />
+    <OrderStatus orderStatusId="6702" statusId="ITEM_COMPLETED" orderId="10018" orderItemSeqId="00002" statusDatetime="2021-10-23 11:00:00" statusUserLogin="admin" />
+    <OrderStatus orderStatusId="6703" statusId="ORDER_COMPLETED" orderId="10018" statusDatetime="2021-10-23 11:00:00" statusUserLogin="admin" />
+
+<!--    Sales Order Data-->
+    <OrderHeader orderId="SALO01" orderTypeId="SALES_ORDER" salesChannelEnumId="WEB_SALES_CHANNEL" orderDate="2021-10-25 09:00:00" priority="2" entryDate="2021-10-25 09:00:00" statusId="ORDER_APPROVED" currencyUom="USD" originFacilityId="WebStoreWarehouse" productStoreId="9000" remainingSubTotal="500" grandTotal="505" />
+    <OrderItem orderId="SALO01" orderItemSeqId="00001" orderItemTypeId="PRODUCT_ORDER_ITEM" productId="BK01" prodCatelogId="DemoCatelog" quantity="20" selectedAmount="0" unitPrice="25" itemDescription="Mouse" statusId="ITEM_APPROVED" />
+    <OrderItemShipGroup orderId="SALO01" shipGroupSeqId="00001" shipmentMethodTypeId="NEXT_DAY" carrierPartyId="UPS" carrierRoleTypeId="CARRIER" contactMechId="10011" />
+    <OrderItemShipGroupAssoc orderId="SALO01" orderItemSeqId="00001" shipGroupSeqId="00001" quantity="20" />
+    <OrderContactMech orderId="SALO01" contactMechPurposeTypeId="SHIPPING_LOCATION" contactMechId="10011" />
+    <OrderContactMech orderId="SALO01" contactMechPurposeTypeId="BILLING_LOCATION" contactMechId="10011" />
+    <OrderRole orderId="SALO01" partyId="Company" roleTypeId="BILL_FROM_VENDOR" />
+    <OrderRole orderId="SALO01" partyId="10011" roleTypeId="BILL_TO_CUSTOMER" />
+    <OrderRole orderId="SALO01" partyId="10011" roleTypeId="SHIP_TO_CUSTOMER" />
+    <OrderRole orderId="SALO01" partyId="10011" roleTypeId="END_USER_CUSTOMER" />
+    <OrderRole orderId="SALO01" partyId="10011" roleTypeId="PLACING_CUSTOMER" />
+    <OrderAdjustment orderAdjustmentId="7777" orderAdjustmentTypeId="SALES_TAX" orderId="SALO01" orderItemSeqId="00001" shipGroupSeqId="00001" comments="1% OFB _NA_ Tax" amount="5" taxAuthorityRate="9000" sourcePercentage="1" primaryGeoId="_NA_" exemptAmount="_NA_" taxAuthGeoId="_NA_" taxAuthPartyId="_NA_" createdDate="2021-10-25 09:00:00"/>
+
+    <OrderStatus orderStatusId="7771" statusId="ORDER_CREATED" orderId="SALO01" statusDatetime="2021-10-25 09:30:00" statusUserLogin="admin" />
+    <OrderStatus orderStatusId="7772" statusId="ITEM_CREATED" orderId="SALO01" orderItemSeqId="00001" statusDatetime="2021-10-25 09:30:00" statusUserLogin="admin" />
+    <OrderStatus orderStatusId="7773" statusId="ORDER_APPROVED" orderId="SALO01" statusDatetime="2021-10-25 09:30:00" statusUserLogin="admin" />
+    <OrderStatus orderStatusId="7774" statusId="ITEM_APPROVED" orderId="SALO01" orderItemSeqId="00001" statusDatetime="2021-10-25 09:30:00" statusUserLogin="admin" />
 
 </entity-engine-xml>
