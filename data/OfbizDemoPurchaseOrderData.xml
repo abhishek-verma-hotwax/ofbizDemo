@@ -61,4 +61,21 @@
     <OrderStatus orderStatusId="7773" statusId="ORDER_APPROVED" orderId="SALO01" statusDatetime="2021-10-25 09:30:00" statusUserLogin="admin" />
     <OrderStatus orderStatusId="7774" statusId="ITEM_APPROVED" orderId="SALO01" orderItemSeqId="00001" statusDatetime="2021-10-25 09:30:00" statusUserLogin="admin" />
 
+<!--    Sales order Shipping Data-->
+<!--    Picklist Craeation-->
+    <Picklist picklistId="7200" facilityId="WebStoreWarehouse" statusId="PICKLIST_PICKED" picklistDate="2021-10-26 12:00:00" createdDate="2021-10-26 12:00:00" createdByuser="admin" />
+    <PicklistBin picklistBinId="7200" picklistId="7200" binLocationNumber="1" primaryOrderId="WSCO10043" primaryShipGroupSeqId="00001" />
+    <PicklistItem picklistBinId="7200" orderId="WSCO10043" orderItemSeqId="00001" shipGroupSeqId="00001" inventoryItemId="10069" itemStatusId="PICKITEM_COMPLETED" quantity="10" />
+
+    <Shipment shipmentId="5000" shipmentTypeId="SALES_SHIPMENT" statusId="SHIPMENT_PACKED" primaryOrderId="WSCO10043" picklistBinId="7200" primaryShipGroupSeqId="00001" estimatedShipCost="11.4" originFacilityId="WebStoreWarehouse" originTelecomNumberId="9201" destinationTelecomNumberId="9201" partyIdTo="10011" partyIdFrom="Company" createdDate="2021-10-26 12:00:00" createdByUser="admin" />
+    <ShipmentItem shipmentId="5000" shipmentItemSeqId="00001" productId="lap01" quantity="10" />
+    <OrderShipment orderId="WSCO10043" orderItemSeqId="00001" shipGroupSeqId="00001" shipmentId="5000" shipmentItemSeqId="00001" qunatity="10" />
+    <ShipmentRouteSegment shipmentId="5000" shipmentRouteSegmentId="00001" originFacilityId="WebStoreWarehouse" originTelecomNumberId="9201" destContactMechId="10011" carrierPartyTo="UPS" shipmentMethodId="NEXT_DAY" />
+    <ShipmentPackage shipmentId="5000" shipmentPackageSeqId="00001" />
+    <ShipmentPackageRouteSeg shipmentId="5000" shipmentPackageSeqId="00001" shipmentRouteSegmentId="00001" />
+    <InventoryItemDetail inventoryItemId="10069" inventoryItemDetailSeqId="5001" effectiveDate="2021-10-27 12:00:00" qunatityOnHandDiff="-10" availableToPromiseDiff="0" orderId="WSCO10043" orderItemSeqId="00001" shipmentId="5000" />
+
+    <OrderStatus orderStatusId="5000" statusId="ITEM_COMPLETED" orderId="WSCO10043" orderItemSeqId="00001" statusDatetime="2021-10-27 12:00:00" statusUserLogin="admin" />
+    <OrderStatus orderStatusId="5001" statusId="ORDER_COMPLETED" orderId="WSCO10043" statusDatetime="2021-10-27 12:00:00" statusUserLogin="admin" />
+
 </entity-engine-xml>
