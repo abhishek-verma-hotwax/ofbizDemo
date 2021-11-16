@@ -78,5 +78,12 @@
     <OrderStatus orderStatusId="5000" statusId="ITEM_COMPLETED" orderId="WSCO10043" orderItemSeqId="00001" statusDatetime="2021-10-27 12:00:00" statusUserLogin="admin" />
     <OrderStatus orderStatusId="5001" statusId="ORDER_COMPLETED" orderId="WSCO10043" statusDatetime="2021-10-27 12:00:00" statusUserLogin="admin" />
     <ItemIssuance itemIssuanceId="5000" orderId="WSCO10043" orderItemSeqId="00001" shipGroupSeqId="00001" inventoryItemId="10069" shipmentId="5000" shipmentItemSeqId="00001" issuedDatetime="2021-10-27 12:00:00" issuedByUserLoginId="admin" quantity="10" />
+    <OrderHeader orderId="10018" orderTypeId="PURCHASE_ORDER" orderName="mouse Order" orderDate="2021-10-16 09:00:00" statusId="ORDER_CREATED" currencyUom="USD" remainingSubTotal="750" grandTotal="755"/>
+    <OrderItem orderId="10018" orderItemSeqId="00002" orderItemTypeId="PRODUCT_ORDER_ITEM" productId="BK01" supplierProductId="quantum" prodCatelogId="DemoCatelog" quantity="30" unitPrice="25" itemDescription="Mouse" statusId="ITEM_CREATED"/>
+    <OrderItemShipGroup orderId="10018" shipGroupSeqId="00001" shipmentMethodTypeId="STANDARD" carrierRoleTypeId="CARRIER" facilityId="WebStoreWarehouse" contactMechId="10024"/>
+    <OrderItemShipGroupAssoc orderId="10018" orderItemSeqId="00002" shipGroupSeqId="00001" quantity="30" />
+    <OrderContactMech orderId="10018" contactMechPurposeTypeId="SHIPPING_LOCATION" contactMechId="10024" />
+    <OrderRole orderId="10018" partyId="10020" roleTypeId="SUPPLIER_AGENT" />
+    <OrderTerm termTypeId="FIN_PAYMENT_TERM" orderId="10018" orderItemSeqId="_NA_" termDays="5" textValue="Payment done in 5 days" description="payment for mouse" />
 
 </entity-engine-xml>

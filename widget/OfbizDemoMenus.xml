@@ -28,5 +28,6 @@ under the License.
         <menu-item name="createproductionRunByJava" title="${uiLabelMap.CreateProductionRunByJava}" ><link target="CreateProductionRunByJavaScreen" /></menu-item>
         <menu-item name="createproductionRunByEvent" title="${uiLabelMap.CreateProductionRunByEvent}" ><link target="CreateProductionRunByEventScreen" /></menu-item>
         <menu-item name="createproductionRunByGroovy" title="${uiLabelMap.CreateProductionRunByGroovy}" ><link target="CreateProductionRunByGroovyScreen" /></menu-item>
+        <menu-item name="routingmenu" title="${uiLabelMap.Routing}"><link target="Routing"/></menu-item>
     </menu>
 </menus>

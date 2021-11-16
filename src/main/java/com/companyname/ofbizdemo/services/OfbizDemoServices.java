@@ -1,4 +1,5 @@
 package com.companyname.ofbizdemo.services;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,10 +8,8 @@ import org.apache.ofbiz.entity.Delegator;
 import org.apache.ofbiz.entity.GenericEntityException;
 import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.manufacturing.jobshopmgt.ProductionRunServices;
-import org.apache.ofbiz.service.DispatchContext;
-import org.apache.ofbiz.service.GenericServiceException;
-import org.apache.ofbiz.service.ModelService;
-import org.apache.ofbiz.service.ServiceUtil;
+import org.apache.ofbiz.service.*;
+import org.owasp.esapi.User;
 
 public class OfbizDemoServices {
 
@@ -28,25 +27,38 @@ public class OfbizDemoServices {
             // Creating record in database for OfbizDemo entity for prepared value
             ofbizDemo = delegator.create(ofbizDemo);
             result.put("ofbizDemoId", ofbizDemo.getString("ofbizDemoId"));
-            Debug.log("==========This is my first Java Service implementation in Apache OFBiz. OfbizDemo record created successfully with ofbizDemoId: "+ofbizDemo.getString("ofbizDemoId"));
+            Debug.log("==========This is my first Java Service implementation in Apache OFBiz. " +
+                    "OfbizDemo record created successfully with ofbizDemoId: "
+                    + ofbizDemo.getString("ofbizDemoId"));
         } catch (GenericEntityException e) {
             Debug.logError(e, module);
-            return ServiceUtil.returnError("Error in creating record in OfbizDemo entity ........" +module);
+            return ServiceUtil.returnError("Error in creating record in OfbizDemo entity ........" + module);
         }
         return result;
     }
 
-    public static Map<String, Object> createProductionRunJava(DispatchContext dctx, Map<String, ? extends Object> context) {
+    public static Map<String, Object> createProductionRunJava(DispatchContext dctx,
+                                                              Map<String, ? extends Object> context) {
         Map<String, Object> result = ServiceUtil.returnSuccess();
-        Map<String, Object> createProductionRunMap = new HashMap<>();
+        GenericValue userLogin = (GenericValue) context.get("userLogin");
+        LocalDispatcher dispatcher = dctx.getDispatcher();
 
         try {
-            createProductionRunMap = dctx.getModelService("createProductionRun").makeValid(context, ModelService.IN_PARAM);
-            Debug.log("============"+createProductionRunMap);
-            ProductionRunServices.createProductionRun(dctx,createProductionRunMap);
+            Map<String, Object> createProductionRunMap = new HashMap<>();
+            createProductionRunMap = dctx.getModelService("createProductionRun").makeValid(context,
+                    ModelService.IN_PARAM);
+            Map<String, Object> resultsMap = dispatcher.runSync("createProductionRun",
+                    createProductionRunMap);
+            if (ServiceUtil.isError(resultsMap)) {
+//                Debug.logInfo(ServiceUtil.getErrorMessage(resultsMap), module);
+                return ServiceUtil.returnError(ServiceUtil.getErrorMessage(resultsMap));
+            }
+            String productionRunId = (String) resultsMap.get("productionRunId");
+            result.put("productionRunId", productionRunId);
         } catch (GenericServiceException e) {
             Debug.log(e, module);
-            return ServiceUtil.returnError("Error in creating record in WorkEffort entity ........" +module);
+            return ServiceUtil.returnError("Error in creating record in WorkEffort entity ........" +
+                    module);
         }
         return result;
     }

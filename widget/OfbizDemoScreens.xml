@@ -168,7 +168,7 @@ under the License.
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                         <platform-specific>
-                            <html><html-template location="component://ofbizDemo/webapp/ofbizDemo/productionRun/CreateProductionRunByJava.ftl"/></html>
+                            <html><html-template location="component://ofbizDemo/webapp/ofbizDemo/productionRun/CreateProductionRunByEvent.ftl"/></html>
                         </platform-specific>
                     </decorator-section>
                 </decorator-screen>
@@ -186,7 +186,24 @@ under the License.
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                         <platform-specific>
-                            <html><html-template location="component://ofbizDemo/webapp/ofbizDemo/productionRun/CreateProductionRunByJava.ftl"/></html>
+                            <html><html-template location="component://ofbizDemo/webapp/ofbizDemo/productionRun/CreateProductionRunByGroovy.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="RoutingScreen">
+        <section>
+            <actions>
+                <set field="titleProperty" value="Routing"/>
+                <set field="headerItem" value="routingmenu" />
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://ofbizDemo/webapp/ofbizDemo/Routing.ftl"/></html>
                         </platform-specific>
                     </decorator-section>
                 </decorator-screen>
