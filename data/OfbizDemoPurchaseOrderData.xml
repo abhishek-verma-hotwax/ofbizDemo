@@ -77,5 +77,6 @@
 
     <OrderStatus orderStatusId="5000" statusId="ITEM_COMPLETED" orderId="WSCO10043" orderItemSeqId="00001" statusDatetime="2021-10-27 12:00:00" statusUserLogin="admin" />
     <OrderStatus orderStatusId="5001" statusId="ORDER_COMPLETED" orderId="WSCO10043" statusDatetime="2021-10-27 12:00:00" statusUserLogin="admin" />
+    <ItemIssuance itemIssuanceId="5000" orderId="WSCO10043" orderItemSeqId="00001" shipGroupSeqId="00001" inventoryItemId="10069" shipmentId="5000" shipmentItemSeqId="00001" issuedDatetime="2021-10-27 12:00:00" issuedByUserLoginId="admin" quantity="10" />
 
 </entity-engine-xml>
